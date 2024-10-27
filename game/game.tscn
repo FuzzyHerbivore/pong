@@ -13,9 +13,13 @@ position = Vector2(0, 0)
 
 [node name="Player 1" parent="Level" instance=ExtResource("1_oqjp8")]
 position = Vector2(-70, 0)
+move_up_action = "player1_move_up"
+move_down_action = "player1_move_down"
 
 [node name="Player 2" parent="Level" instance=ExtResource("1_oqjp8")]
 position = Vector2(70, 0)
+move_up_action = "player2_move_up"
+move_down_action = "player2_move_down"
 
 [node name="Ball" parent="Level" instance=ExtResource("3_qw8og")]
 
