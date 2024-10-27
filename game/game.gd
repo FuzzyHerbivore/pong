@@ -33,9 +33,9 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	var ball_in_game := get_children().filter(func (child) -> bool: return child is Ball)
+	var no_ball_in_game := get_children().filter(func (child) -> bool: return child is Ball).is_empty()
 
-	if Input.is_action_just_pressed("start") and not ball_in_game:
+	if Input.is_action_just_pressed("start") and no_ball_in_game:
 		_spawn_ball(ball_spawn_point.global_position)
 
 
