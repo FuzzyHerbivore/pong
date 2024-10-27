@@ -9,7 +9,6 @@
 script = ExtResource("1_e87rt")
 
 [node name="World" type="Node2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(80, 66)
 
 [node name="Arena" parent="World" instance=ExtResource("2_bmmua")]
@@ -17,13 +16,13 @@ unique_name_in_owner = true
 
 [node name="Player1" parent="World" instance=ExtResource("1_oqjp8")]
 position = Vector2(-70, 0)
-move_up_action = "player1_move_up"
-move_down_action = "player1_move_down"
+_move_up_action = "player1_move_up"
+_move_down_action = "player1_move_down"
 
 [node name="Player2" parent="World" instance=ExtResource("1_oqjp8")]
 position = Vector2(70, 0)
-move_up_action = "player2_move_up"
-move_down_action = "player2_move_down"
+_move_up_action = "player2_move_up"
+_move_down_action = "player2_move_down"
 
 [node name="BallSpawnPoint" type="Marker2D" parent="World"]
 unique_name_in_owner = true
