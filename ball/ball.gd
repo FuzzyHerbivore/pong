@@ -1,10 +1,10 @@
-extends RigidBody2D
+class_name Ball extends RigidBody2D
 
 
 @export var initial_speed := 100.0
 @export_range(0, 120, 1) var start_angle_spread := 60
 
-var velocity: Vector2
+var _velocity: Vector2
 
 
 func _ready() -> void:
@@ -17,11 +17,11 @@ func _ready() -> void:
 	var start_angle_deviation_from_x_axis := float(start_angle_spread) / 2.0
 	var random_direction_degrees := randf_range(-start_angle_deviation_from_x_axis, start_angle_deviation_from_x_axis)
 	starting_velocity = starting_velocity.rotated(deg_to_rad(random_direction_degrees))
-	velocity = starting_velocity * initial_speed
+	_velocity = starting_velocity * initial_speed
 
 
 func _physics_process(delta: float) -> void:
-	var collision := move_and_collide(velocity * delta)
+	var collision := move_and_collide(_velocity * delta)
 
 	if collision != null:
-		velocity = velocity.bounce(collision.get_normal())
+		_velocity = _velocity.bounce(collision.get_normal())

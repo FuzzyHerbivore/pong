@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt7x4lxggxcuw"]
+[gd_scene load_steps=6 format=3 uid="uid://dt7x4lxggxcuw"]
 
+[ext_resource type="Script" path="res://game/game.gd" id="1_e87rt"]
 [ext_resource type="PackedScene" uid="uid://cj6b7ke1m4jfm" path="res://player/player.tscn" id="1_oqjp8"]
 [ext_resource type="PackedScene" uid="uid://bnfj3um5ja40e" path="res://arena/arena.tscn" id="2_bmmua"]
 [ext_resource type="PackedScene" uid="uid://dimtu5wmgi1cm" path="res://ball/ball.tscn" id="3_qw8og"]
+[ext_resource type="Theme" uid="uid://b1ulnjo3pn604" path="res://assets/theme.tres" id="5_bfdpf"]
 
 [node name="Game" type="Node"]
+script = ExtResource("1_e87rt")
 
 [node name="Level" type="Node2D" parent="."]
+position = Vector2(80, 66)
 
 [node name="Arena" parent="Level" instance=ExtResource("2_bmmua")]
-position = Vector2(0, 0)
+unique_name_in_owner = true
 
 [node name="Player 1" parent="Level" instance=ExtResource("1_oqjp8")]
 position = Vector2(-70, 0)
@@ -23,4 +27,27 @@ move_down_action = "player2_move_down"
 
 [node name="Ball" parent="Level" instance=ExtResource("3_qw8og")]
 
+[node name="ScoreContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 28.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_bfdpf")
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_right = 14
+
+[node name="ScoreP1Label" type="Label" parent="ScoreContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="ScoreP2Label" type="Label" parent="ScoreContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 66)

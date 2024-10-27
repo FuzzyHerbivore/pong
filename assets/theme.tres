@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b1ulnjo3pn604"]
+
+[ext_resource type="FontFile" uid="uid://dbw0kdho5mylt" path="res://assets/Kenney Pixel Square.ttf" id="1_515yj"]
+
+[resource]
+Label/colors/font_color = Color(0.188235, 0.384314, 0.188235, 1)
+Label/fonts/font = ExtResource("1_515yj")
