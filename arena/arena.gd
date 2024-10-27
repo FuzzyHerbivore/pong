@@ -13,12 +13,12 @@ func _ready() -> void:
 	goal_east.body_entered.connect(
 		func (body: Node2D) -> void:
 			if body is Ball:
-				print("ball in east goal")
 				goal_hit_east.emit()
+				body.queue_free()
 	)
 	goal_west.body_entered.connect(
 		func (body: Node2D) -> void:
 			if body is Ball:
-				print("ball in west goal")
 				goal_hit_west.emit()
+				body.queue_free()
 	)

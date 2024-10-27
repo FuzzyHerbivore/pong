@@ -1,31 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt7x4lxggxcuw"]
+[gd_scene load_steps=5 format=3 uid="uid://dt7x4lxggxcuw"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_e87rt"]
 [ext_resource type="PackedScene" uid="uid://cj6b7ke1m4jfm" path="res://player/player.tscn" id="1_oqjp8"]
 [ext_resource type="PackedScene" uid="uid://bnfj3um5ja40e" path="res://arena/arena.tscn" id="2_bmmua"]
-[ext_resource type="PackedScene" uid="uid://dimtu5wmgi1cm" path="res://ball/ball.tscn" id="3_qw8og"]
 [ext_resource type="Theme" uid="uid://b1ulnjo3pn604" path="res://assets/theme.tres" id="5_bfdpf"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_e87rt")
 
-[node name="Level" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(80, 66)
 
-[node name="Arena" parent="Level" instance=ExtResource("2_bmmua")]
+[node name="Arena" parent="World" instance=ExtResource("2_bmmua")]
 unique_name_in_owner = true
 
-[node name="Player1" parent="Level" instance=ExtResource("1_oqjp8")]
+[node name="Player1" parent="World" instance=ExtResource("1_oqjp8")]
 position = Vector2(-70, 0)
 move_up_action = "player1_move_up"
 move_down_action = "player1_move_down"
 
-[node name="Player2" parent="Level" instance=ExtResource("1_oqjp8")]
+[node name="Player2" parent="World" instance=ExtResource("1_oqjp8")]
 position = Vector2(70, 0)
 move_up_action = "player2_move_up"
 move_down_action = "player2_move_down"
 
-[node name="Ball" parent="Level" instance=ExtResource("3_qw8og")]
+[node name="BallSpawnPoint" type="Marker2D" parent="World"]
+unique_name_in_owner = true
 
 [node name="ScoreContainer" type="MarginContainer" parent="."]
 anchors_preset = 10
