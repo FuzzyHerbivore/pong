@@ -15,12 +15,12 @@ position = Vector2(80, 66)
 [node name="Arena" parent="Level" instance=ExtResource("2_bmmua")]
 unique_name_in_owner = true
 
-[node name="Player 1" parent="Level" instance=ExtResource("1_oqjp8")]
+[node name="Player1" parent="Level" instance=ExtResource("1_oqjp8")]
 position = Vector2(-70, 0)
 move_up_action = "player1_move_up"
 move_down_action = "player1_move_down"
 
-[node name="Player 2" parent="Level" instance=ExtResource("1_oqjp8")]
+[node name="Player2" parent="Level" instance=ExtResource("1_oqjp8")]
 position = Vector2(70, 0)
 move_up_action = "player2_move_up"
 move_down_action = "player2_move_down"
@@ -38,12 +38,12 @@ theme = ExtResource("5_bfdpf")
 theme_override_constants/margin_left = 14
 theme_override_constants/margin_right = 14
 
-[node name="ScoreP1Label" type="Label" parent="ScoreContainer"]
+[node name="ScorePlayer1Label" type="Label" parent="ScoreContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
-[node name="ScoreP2Label" type="Label" parent="ScoreContainer"]
+[node name="ScorePlayer2Label" type="Label" parent="ScoreContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"

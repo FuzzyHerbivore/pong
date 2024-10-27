@@ -2,8 +2,8 @@ extends Node
 
 
 @onready var arena: Arena = %Arena
-@onready var score_p_1_label: Label = %ScoreP1Label
-@onready var score_p_2_label: Label = %ScoreP2Label
+@onready var score_p_1_label: Label = %ScorePlayer1Label
+@onready var score_p_2_label: Label = %ScorePlayer2Label
 
 var score_p_1 := 0:
 	set(value):
