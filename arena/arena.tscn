@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnfj3um5ja40e"]
+
+[ext_resource type="Texture2D" uid="uid://dx18nyprkkymg" path="res://assets/spritesheet.png" id="1_ciwxv"]
+[ext_resource type="PackedScene" uid="uid://bfy8rt7a1rhu" path="res://arena/wall.tscn" id="2_idyo4"]
+
+[node name="Arena" type="Node2D"]
+position = Vector2(160, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ciwxv")
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 144)
+
+[node name="WallNorth" parent="." instance=ExtResource("2_idyo4")]
+position = Vector2(0, -69)
+
+[node name="WallSouth" parent="." instance=ExtResource("2_idyo4")]
+position = Vector2(0, 69)

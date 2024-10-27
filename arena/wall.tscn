@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfy8rt7a1rhu"]
+
+[ext_resource type="Texture2D" uid="uid://dx18nyprkkymg" path="res://assets/spritesheet.png" id="1_0hxh1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8xce"]
+size = Vector2(160, 6)
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0hxh1")
+region_enabled = true
+region_rect = Rect2(0, 144, 160, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k8xce")
