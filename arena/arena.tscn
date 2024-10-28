@@ -34,3 +34,6 @@ position = Vector2(-85, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalWest"]
 shape = SubResource("RectangleShape2D_m74to")
+
+[connection signal="body_entered" from="GoalEast" to="." method="_on_goal_east_body_entered"]
+[connection signal="body_entered" from="GoalWest" to="." method="_on_goal_west_body_entered"]

@@ -1,13 +1,13 @@
 class_name Player extends CharacterBody2D
 
 
-@export var _move_up_action: String
-@export var _move_down_action: String
-@export_range(50.0, 200.0) var _movement_speed: float = 100.0
+@export var _move_up_action = ""
+@export var _move_down_action = ""
+@export_range(50.0, 200.0) var _movement_speed = 100.0
 
 
-func _physics_process(_delta: float) -> void:
-	var input_vector := Vector2.ZERO
+func _physics_process(_delta):
+	var input_vector = Vector2.ZERO
 
 	if Input.is_action_pressed(_move_up_action):
 		input_vector.y = -1.0
