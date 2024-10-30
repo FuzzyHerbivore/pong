@@ -1,4 +1,4 @@
-class_name Arena extends Node2D
+extends Node2D
 
 
 signal goal_hit_east
