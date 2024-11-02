@@ -10,12 +10,12 @@ signal goal_hit(side: GoalSide)
 
 
 func _on_goal_east_body_entered(body):
-	if body is Ball:
+	if body.has_method("collision_with_goal"):
 		goal_hit.emit(GoalSide.EAST)
-		body.queue_free()
+		body.collision_with_goal()
 
 
 func _on_goal_west_body_entered(body):
-	if body is Ball:
+	if body.has_method("collision_with_goal"):
 		goal_hit.emit(GoalSide.WEST)
-		body.queue_free()
+		body.collision_with_goal()

@@ -1,8 +1,9 @@
 extends Node
 
 const ARENA = preload("res://arena/arena.gd")
-@export var ball_scene: PackedScene
 
+
+@export var ball_scene: PackedScene
 
 var score_p_1 = 0:
 	set(value):

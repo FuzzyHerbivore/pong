@@ -1,4 +1,4 @@
-class_name Ball extends RigidBody2D
+extends RigidBody2D
 
 
 @export var _initial_speed = 100.0
@@ -29,3 +29,7 @@ func _physics_process(delta):
 
 	if collision != null:
 		_velocity = _velocity.bounce(collision.get_normal())
+
+
+func collision_with_goal():
+	queue_free()
