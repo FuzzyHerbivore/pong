@@ -1,14 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt7x4lxggxcuw"]
+[gd_scene load_steps=8 format=3 uid="uid://dt7x4lxggxcuw"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_e87rt"]
 [ext_resource type="PackedScene" uid="uid://cj6b7ke1m4jfm" path="res://player/player.tscn" id="1_oqjp8"]
 [ext_resource type="PackedScene" uid="uid://bnfj3um5ja40e" path="res://arena/arena.tscn" id="2_bmmua"]
+[ext_resource type="PackedScene" uid="uid://dimtu5wmgi1cm" path="res://ball/ball.tscn" id="2_tv8bq"]
 [ext_resource type="PackedScene" uid="uid://cpslkvx1dqt7h" path="res://game/ball_manager.tscn" id="4_dapp4"]
 [ext_resource type="Theme" uid="uid://b1ulnjo3pn604" path="res://assets/theme.tres" id="5_bfdpf"]
 [ext_resource type="Script" path="res://game/ball_manager.gd" id="5_dwtnu"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_e87rt")
+ball_scene = ExtResource("2_tv8bq")
 
 [node name="World" type="Node2D" parent="."]
 position = Vector2(80, 66)

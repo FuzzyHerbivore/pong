@@ -11,7 +11,6 @@ func _on_goal_east_body_entered(body):
 		body.queue_free()
 
 
-
 func _on_goal_west_body_entered(body):
 	if body is Ball:
 		goal_hit_west.emit()

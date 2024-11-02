@@ -1,7 +1,7 @@
 extends Node
 
 
-const BALL_SCENE = preload("res://ball/ball.tscn")
+@export var ball_scene: PackedScene
 
 
 var score_p_1 = 0:
@@ -18,7 +18,7 @@ var score_p_2 = 0:
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("start"):
 		if %BallManager.get_child_count() < 1:
-			%BallManager.spawn_ball(BALL_SCENE, %BallSpawnPoint.global_position)
+			%BallManager.spawn_ball(ball_scene, %BallSpawnPoint.global_position)
 
 
 func _update_score_labels():
