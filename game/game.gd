@@ -1,6 +1,6 @@
 extends Node
 
-
+const ARENA = preload("res://arena/arena.gd")
 @export var ball_scene: PackedScene
 
 
@@ -26,9 +26,9 @@ func _update_score_labels():
 	%ScorePlayer2Label.text = str(score_p_2)
 
 
-func _on_arena_goal_hit_east():
-	score_p_1 += 1
-
-
-func _on_arena_goal_hit_west():
-	score_p_2 += 1
+func _on_arena_goal_hit(goal_side):
+	match goal_side:
+		ARENA.GoalSide.EAST:
+			score_p_1 += 1
+		ARENA.GoalSide.WEST:
+			score_p_2 += 1

@@ -60,5 +60,4 @@ horizontal_alignment = 2
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(80, 66)
 
-[connection signal="goal_hit_east" from="World/Arena" to="." method="_on_arena_goal_hit_east"]
-[connection signal="goal_hit_west" from="World/Arena" to="." method="_on_arena_goal_hit_west"]
+[connection signal="goal_hit" from="World/Arena" to="." method="_on_arena_goal_hit"]
