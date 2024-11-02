@@ -1,12 +1,13 @@
 extends Node2D
 
 
+signal goal_hit(side: GoalSide)
+
+
 enum GoalSide {
 	EAST = 1,
 	WEST = 2
 }
-
-signal goal_hit(side: GoalSide)
 
 
 func _on_goal_east_body_entered(body):
