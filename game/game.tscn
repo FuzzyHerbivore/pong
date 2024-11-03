@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt7x4lxggxcuw"]
+[gd_scene load_steps=9 format=3 uid="uid://dt7x4lxggxcuw"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_e87rt"]
 [ext_resource type="PackedScene" uid="uid://cj6b7ke1m4jfm" path="res://player/player.tscn" id="1_oqjp8"]
 [ext_resource type="PackedScene" uid="uid://bnfj3um5ja40e" path="res://arena/arena.tscn" id="2_bmmua"]
 [ext_resource type="PackedScene" uid="uid://dimtu5wmgi1cm" path="res://ball/ball.tscn" id="2_tv8bq"]
+[ext_resource type="PackedScene" uid="uid://cu0goa8idj7ty" path="res://arena/goal.tscn" id="4_5423q"]
 [ext_resource type="PackedScene" uid="uid://cpslkvx1dqt7h" path="res://game/ball_manager.tscn" id="4_dapp4"]
 [ext_resource type="Theme" uid="uid://b1ulnjo3pn604" path="res://assets/theme.tres" id="5_bfdpf"]
 [ext_resource type="Script" path="res://game/ball_manager.gd" id="5_dwtnu"]
@@ -18,15 +19,13 @@ position = Vector2(80, 66)
 [node name="Arena" parent="World" instance=ExtResource("2_bmmua")]
 unique_name_in_owner = true
 
-[node name="Player1" parent="World" instance=ExtResource("1_oqjp8")]
-position = Vector2(-70, 0)
-_move_up_action = "player1_move_up"
-_move_down_action = "player1_move_down"
+[node name="GoalEast" parent="World/Arena" node_paths=PackedStringArray("opposing_player") instance=ExtResource("4_5423q")]
+position = Vector2(85, 0)
+opposing_player = NodePath("../../Players/Player1")
 
-[node name="Player2" parent="World" instance=ExtResource("1_oqjp8")]
-position = Vector2(70, 0)
-_move_up_action = "player2_move_up"
-_move_down_action = "player2_move_down"
+[node name="GoalWest" parent="World/Arena" node_paths=PackedStringArray("opposing_player") instance=ExtResource("4_5423q")]
+position = Vector2(-85, 0)
+opposing_player = NodePath("../../Players/Player2")
 
 [node name="BallSpawnPoint" type="Marker2D" parent="World"]
 unique_name_in_owner = true
@@ -34,6 +33,20 @@ unique_name_in_owner = true
 [node name="BallManager" parent="World" instance=ExtResource("4_dapp4")]
 unique_name_in_owner = true
 script = ExtResource("5_dwtnu")
+
+[node name="Players" type="Node" parent="World"]
+
+[node name="Player1" parent="World/Players" node_paths=PackedStringArray("_score_label") instance=ExtResource("1_oqjp8")]
+position = Vector2(10, 66)
+_move_up_action = "player1_move_up"
+_move_down_action = "player1_move_down"
+_score_label = NodePath("../../../ScoreContainer/ScorePlayer1Label")
+
+[node name="Player2" parent="World/Players" node_paths=PackedStringArray("_score_label") instance=ExtResource("1_oqjp8")]
+position = Vector2(150, 66)
+_move_up_action = "player2_move_up"
+_move_down_action = "player2_move_down"
+_score_label = NodePath("../../../ScoreContainer/ScorePlayer2Label")
 
 [node name="ScoreContainer" type="MarginContainer" parent="."]
 anchors_preset = 10
@@ -47,17 +60,13 @@ theme_override_constants/margin_left = 14
 theme_override_constants/margin_right = 14
 
 [node name="ScorePlayer1Label" type="Label" parent="ScoreContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 
 [node name="ScorePlayer2Label" type="Label" parent="ScoreContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(80, 66)
-
-[connection signal="goal_hit" from="World/Arena" to="." method="_on_arena_goal_hit"]
