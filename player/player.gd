@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var _move_up_action = ""
 @export var _move_down_action = ""
 @export_range(50.0, 200.0) var _movement_speed = 100.0
+
 @export var _score_label: Label
 
 var _score = 0:
