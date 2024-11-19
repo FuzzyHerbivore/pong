@@ -1,17 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt7x4lxggxcuw"]
+[gd_scene load_steps=7 format=3 uid="uid://dt7x4lxggxcuw"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_e87rt"]
 [ext_resource type="PackedScene" uid="uid://cj6b7ke1m4jfm" path="res://player/player.tscn" id="1_oqjp8"]
 [ext_resource type="PackedScene" uid="uid://bnfj3um5ja40e" path="res://arena/arena.tscn" id="2_bmmua"]
-[ext_resource type="PackedScene" uid="uid://dimtu5wmgi1cm" path="res://ball/ball.tscn" id="2_r2swp"]
 [ext_resource type="PackedScene" uid="uid://cu0goa8idj7ty" path="res://arena/goal.tscn" id="4_5423q"]
-[ext_resource type="PackedScene" uid="uid://cpslkvx1dqt7h" path="res://game/ball_manager.tscn" id="4_dapp4"]
 [ext_resource type="Theme" uid="uid://b1ulnjo3pn604" path="res://assets/theme.tres" id="5_bfdpf"]
-[ext_resource type="Script" path="res://game/ball_manager.gd" id="5_dwtnu"]
+[ext_resource type="PackedScene" uid="uid://cfx8s61d0romi" path="res://ball/ball_manager.tscn" id="5_iwuk7"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_e87rt")
-_ball_scene = ExtResource("2_r2swp")
 
 [node name="World" type="Node2D" parent="."]
 position = Vector2(80, 66)
@@ -27,12 +24,8 @@ _opposing_player = NodePath("../../Players/Player1")
 position = Vector2(-85, 0)
 _opposing_player = NodePath("../../Players/Player2")
 
-[node name="BallSpawnPoint" type="Marker2D" parent="World"]
+[node name="BallManager" parent="World" instance=ExtResource("5_iwuk7")]
 unique_name_in_owner = true
-
-[node name="BallManager" parent="World" instance=ExtResource("4_dapp4")]
-unique_name_in_owner = true
-script = ExtResource("5_dwtnu")
 
 [node name="Players" type="Node" parent="World"]
 
