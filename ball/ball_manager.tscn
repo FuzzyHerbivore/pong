@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfx8s61d0romi"]
 
-[ext_resource type="Script" path="res://ball/ball_manager.gd" id="1_vidm6"]
+[ext_resource type="Script" uid="uid://belcsubjkkk5h" path="res://ball/ball_manager.gd" id="1_vidm6"]
 [ext_resource type="PackedScene" uid="uid://dimtu5wmgi1cm" path="res://ball/ball.tscn" id="2_10cy3"]
 
 [node name="BallManager" type="Marker2D"]

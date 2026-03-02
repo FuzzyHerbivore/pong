@@ -1,65 +1,68 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt7x4lxggxcuw"]
+[gd_scene load_steps=7 format=3 uid="uid://cnnv3lr6oihef"]
 
-[ext_resource type="Script" path="res://game/game.gd" id="1_e87rt"]
+[ext_resource type="Script" uid="uid://d1apw6xhwf2in" path="res://game/game.gd" id="1_e87rt"]
 [ext_resource type="PackedScene" uid="uid://cj6b7ke1m4jfm" path="res://player/player.tscn" id="1_oqjp8"]
 [ext_resource type="PackedScene" uid="uid://bnfj3um5ja40e" path="res://arena/arena.tscn" id="2_bmmua"]
 [ext_resource type="PackedScene" uid="uid://cu0goa8idj7ty" path="res://arena/goal.tscn" id="4_5423q"]
+[ext_resource type="PackedScene" uid="uid://cfx8s61d0romi" path="res://ball/ball_manager.tscn" id="4_dakft"]
 [ext_resource type="Theme" uid="uid://b1ulnjo3pn604" path="res://assets/theme.tres" id="5_bfdpf"]
-[ext_resource type="PackedScene" uid="uid://cfx8s61d0romi" path="res://ball/ball_manager.tscn" id="5_iwuk7"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_e87rt")
 
 [node name="World" type="Node2D" parent="."]
-position = Vector2(80, 66)
 
 [node name="Arena" parent="World" instance=ExtResource("2_bmmua")]
-unique_name_in_owner = true
+position = Vector2(80, 72)
 
-[node name="GoalEast" parent="World/Arena" node_paths=PackedStringArray("_opposing_player") instance=ExtResource("4_5423q")]
-position = Vector2(85, 0)
-_opposing_player = NodePath("../../Players/Player1")
-
-[node name="GoalWest" parent="World/Arena" node_paths=PackedStringArray("_opposing_player") instance=ExtResource("4_5423q")]
+[node name="GoalLeft" parent="World/Arena" node_paths=PackedStringArray("_opposing_player") instance=ExtResource("4_5423q")]
 position = Vector2(-85, 0)
 _opposing_player = NodePath("../../Players/Player2")
 
-[node name="BallManager" parent="World" instance=ExtResource("5_iwuk7")]
+[node name="GoalRight" parent="World/Arena" node_paths=PackedStringArray("_opposing_player") instance=ExtResource("4_5423q")]
+position = Vector2(85, 0)
+_opposing_player = NodePath("../../Players/Player1")
+
+[node name="BallManager" parent="World/Arena" instance=ExtResource("4_dakft")]
 unique_name_in_owner = true
 
 [node name="Players" type="Node" parent="World"]
 
 [node name="Player1" parent="World/Players" node_paths=PackedStringArray("_score_label") instance=ExtResource("1_oqjp8")]
-position = Vector2(10, 66)
+position = Vector2(10, 72)
 _move_up_action = "player1_move_up"
 _move_down_action = "player1_move_down"
-_score_label = NodePath("../../../ScoreContainer/ScorePlayer1Label")
+_score_label = NodePath("../../../UI/MarginContainer/ScoreLabelPlayer1")
 
 [node name="Player2" parent="World/Players" node_paths=PackedStringArray("_score_label") instance=ExtResource("1_oqjp8")]
-position = Vector2(150, 66)
+position = Vector2(150, 72)
 _move_up_action = "player2_move_up"
 _move_down_action = "player2_move_down"
-_score_label = NodePath("../../../ScoreContainer/ScorePlayer2Label")
+_score_label = NodePath("../../../UI/MarginContainer/ScoreLabelPlayer2")
 
-[node name="ScoreContainer" type="MarginContainer" parent="."]
+[node name="UI" type="Control" parent="."]
+custom_minimum_size = Vector2(160, 144)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 144.0
+theme = ExtResource("5_bfdpf")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 4.0
-offset_bottom = 28.0
+offset_top = 6.0
+offset_bottom = 29.0
 grow_horizontal = 2
-size_flags_horizontal = 3
-theme = ExtResource("5_bfdpf")
-theme_override_constants/margin_left = 14
-theme_override_constants/margin_right = 14
 
-[node name="ScorePlayer1Label" type="Label" parent="ScoreContainer"]
+[node name="ScoreLabelPlayer1" type="Label" parent="UI/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 text = "0"
 
-[node name="ScorePlayer2Label" type="Label" parent="ScoreContainer"]
+[node name="ScoreLabelPlayer2" type="Label" parent="UI/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 text = "0"
 horizontal_alignment = 2
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(80, 66)
